@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    Testing_page
+{% endblock %}
+
+{% block content %}
+
+{% for i in result %}
+    <h1>{{ i['first_name'] }}</h1>
+    <h1>{{ i['last_name'] }}</h1>
+    <h1>{{ i['dob'] }}</h1>
+    <h5>{{ i['gender'] }}</h5>
+{% endfor %}
+
+{% endblock %}

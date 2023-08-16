@@ -1,0 +1,193 @@
+{% extends 'main.html' %}
+
+    {% block title %}
+        Main-Page
+    {% endblock %}
+
+{% block content %}
+<body class="bg-color container-fluid">
+    
+    <div class="row mt-1 mb-1">
+        <div class="col-sm-1">
+            <input name="token-num" type="text" id="tokn-no" class="tokn-inp" value="{{ tok_no }}" autocomplete="off">
+        </div>
+        <div class="col-sm-1">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="duplicate">
+                <p class="form-check-label" for="duplicate"><b>Duplicate</b></p>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <input type="date" id="curnt-date" class="dat-inp">
+        </div>
+        <div class="col-sm-3 text-center">
+            <input type="text" id="burt-read" value="" class="dis-inp w-50">
+        </div>
+        <div class="col-sm-1">
+            <h4 id="show-buret"></h4>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-check ml-5">
+                <input class="form-check-input" type="checkbox" id="show-check">
+                <p class="form-check-label" for="defaultCheck1"><b>Show</b></p>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="ND" name="d-status" id="deliveredCheck">
+                <small class="form-check-label" for="notDeliveredCheck"><b>Not Delivered</b></small>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="D" name="d-status" id="notDeliveredCheck">
+                <small class="form-check-label" for="deliveredCheck"><b>Delivered</b></small>
+            </div>
+        </div>
+    </div>
+    <section class="bg-color-2">
+        <div class="row p-2">
+            <div class="col-sm-5">
+                <div class="d-flex flex-column">
+                    <div class="d-flex align-items-center">
+                        <label id="cust-labl" class="mr-1" data-name="{{sugg|tojson}}" for="customer-name">Customer Name </label>
+                        <div>
+                        <input class="cust-inp" type="text" id="cust-name" autocomplete="off">
+                        </div>
+                        <input class="ml-1" id="check-fil" type="checkbox" value="">
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <label class="mr-1" for="second-name">Second Name </label>
+                        <input class="sec-inp" type="text" id="second-name" autocomplete="off">
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <label class="mr-1" for="burette-read">Burette Read </label>
+                        <div class="d-flex align-items-center burt-inp">
+                            <input class="buret-rd" type="text" id="burette-tok" name="burette-read-1" autocomplete="off">
+                            <input class="buret-rd" type="number" id="burette-read-1" name="burette-read-2" autocomplete="off">
+                            <input class="buret-rd" type="number" id="burette-read-2" name="burette-read-3" autocomplete="off">
+                            <input class="buret-rd" type="number" id="burette-read-3" name="burette-read-3" autocomplete="off">
+                            <button style="height: 1.8vw; width: 4vw; font-size: small;">Font</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="d-flex flex-column">
+                    <div class="d-flex align-items-center">
+                        <label id="itm_labl" class="mr-1" data-itmsug="{{ itmsugg|tojson }}" for="customer-name">Item Name </label>
+                        <input type="text" class="cust-inp" id="item-dtls">
+                    </div>
+                    <div class="d-flex align-items-center" style="padding-top: 0.3vh;">
+                        <div class="d-flex flex-column">
+                            <label class="mr-1" for="item-desc">Item Desc </label>
+                            <div>
+                                <select class="" name="" id="">
+                                    <option value="ENG">ENG</option>
+                                    <option value="ENG">TML</option>
+                                    <option value="ENG">TLG</option>
+                                </select>
+                            </div>
+                        </div>
+                        <textarea class="itm-inp" name="" id="item_discript" cols="30" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="floating-notification">
+                </div>
+                <div class="d-flex flex-column">
+                    <div class="d-flex align-items-center">
+                        <label class="mr-1" for="customer-name">Weight </label>
+                        <input class="weit-inp" type="number" id="wight">
+                        <span class="ml-1">G<small>ms</small></span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <label class="mr-1" for="ypm">Type </label>
+                        <div class="">
+                            <select class="ypm-inp" name="" id="type-select">
+                                <option value="OTHERS">OTHERS</option>
+                                <option value="MELT">MELT</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <label class="mr-1" for="burette-read">Mark </label>
+                        <input class="mrk-inp" type="text" id="mark" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between bg-color p-1 ml-2 mr-2 rounded">
+            <button id="add" class="btn-ht bg-primary">Add</button>
+            <button id="modify" class="btn-ht bg-warning">Modify</button>
+            <button id="take-print" class="btn-ht bg-primary">Select Print</button>
+            <button class="btn-ht bg-warning">Clear</button>
+            <button id="print" class="btn-ht bg-primary">Print</button>
+            <button id="deliver" class="btn-ht bg-warning">Deliver</button>
+            <button id="refresh" class="btn-ht bg-primary">Refresh</button>
+            <button id="empty-rec" class="btn-ht bg-warning">Empty Rec</button>
+            <button id="delete" class="btn-ht bg-primary">Delete</button>
+        </div>
+
+        <div class="p-2">
+            <div class="tbl-flow">
+            <table id="mytbl" class="table table-bordered bg-white">
+                <thead style="background-color: rgb(56, 239, 95);">
+                    <tr class="text-center">
+                        <th id="sel-mark" scope="col">Select</th>
+                        <th scope="col">TNo</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Item Details</th>
+                        <th scope="col">Touch</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Wt</th>
+                        <th scope="col">Mark</th>
+                        <th scope="col">Sts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in result %}
+                    {% if (row['sts'] == 'D') %}
+                    <tr class="bg-info text-white">
+                        <td class="sel-mark text-center"><input type="checkbox" name="" id="mrk-opt" data-json="{{ row|tojson }}"></td>
+                        <td id="td" data-json="{{ row|tojson }}" scope="row" class="bg-warning">{{ row['token_no'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}">{{ row['fst_name'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}">{{ row['items'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}" class="bg-danger text-white">{{ row['touch'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}">{{ row['date'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}">{{ row['wight'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}">{{ row['mark'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}">{{ row['sts'] }}</td>
+                    </tr>
+                    {% else: %}
+                    <tr>
+                        <td class="sel-mark text-center"><input type="checkbox" name="" id="mrk-opt" data-json="{{ row|tojson }}"></td>
+                        <td id="td" data-json="{{ row|tojson }}" scope="row" class="bg-warning">{{ row['token_no'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}">{{ row['fst_name'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}">{{ row['items'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}" class="bg-danger text-white">{{ row['touch'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}">{{ row['date'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}">{{ row['wight'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}">{{ row['mark'] }}</td>
+                        <td id="td" data-json="{{ row|tojson }}">{{ row['sts'] }}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </section>
+    
+    <section class="mt-2 border border-dark d-flex justify-content-between pl-3 pr-3 p-1 rounded">
+        <button id="daily-rep" class="btn-ht bg-primary">Daily Rep</button>
+        <button id="print-name" class="btn-ht bg-warning">Print Name</button>
+        <button id="design" class="btn-ht bg-primary">Designs</button>
+        <button id="sel-print" class="btn-ht bg-warning">Mark</button>
+        <button id="customer" class="btn-ht bg-primary">Customers</button>
+        <button id="sort" class="btn-ht bg-warning">Sort</button>
+        <button class="btn-ht bg-primary">OldDB</button>
+        <button class="btn-ht bg-warning">CurrentDB</button>
+        <button id="logout" class="btn-ht bg-danger text-white">LogOut</button>
+    </section>
+</body>
+{% endblock %}

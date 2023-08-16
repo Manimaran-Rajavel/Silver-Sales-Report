@@ -1,0 +1,64 @@
+<!-- {% extends 'main.html' %}
+
+    {% block title %}
+        Main-Page
+    {% endblock %}
+
+{% block content %}
+
+<table id="mytbl" class="table table-bordered bg-white">
+	<thead style="background-color: rgb(56, 239, 95);">
+		<tr class="text-center">
+			<th id="sel-mark" scope="col">Select</th>
+			<th scope="col">TNo</th>
+			<th scope="col">Customer Name</th>
+			<th scope="col">Item Details</th>
+			<th scope="col">Touch</th>
+			<th scope="col">Date</th>
+			<th scope="col">Wt</th>
+			<th scope="col">Mark</th>
+			<th scope="col">Sts</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for row in lst %}
+		{% if (row['sts'] == 'D') %}
+		<tr class="bg-info text-white">
+			<td class="sel-mark text-center"><input type="checkbox" name="" id="mrk-opt" data-json="{{ row|tojson }}"></td>
+			<td id="td" data-json="{{ row|tojson }}" scope="row" class="bg-warning">{{ row['token_no'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}">{{ row['fst_name'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}">{{ row['items'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}" class="bg-danger text-white">{{ row['touch'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}">{{ row['date'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}">{{ row['wight'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}">{{ row['mark'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}">{{ row['sts'] }}</td>
+		</tr>
+		{% else: %}
+		<tr>
+			<td class="sel-mark text-center"><input type="checkbox" name="" id="mrk-opt" data-json="{{ row|tojson }}"></td>
+			<td id="td" data-json="{{ row|tojson }}" scope="row" class="bg-warning">{{ row['token_no'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}">{{ row['fst_name'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}">{{ row['items'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}" class="bg-danger text-white">{{ row['touch'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}">{{ row['date'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}">{{ row['wight'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}">{{ row['mark'] }}</td>
+			<td id="td" data-json="{{ row|tojson }}">{{ row['sts'] }}</td>
+		</tr>
+		{% endif %}
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1>{{ name }}</h1>
+</body>
+</html>
